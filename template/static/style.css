@@ -80,9 +80,14 @@ table.cookbooks {
 table.cookbooks th,
 table.cookbooks td {
   border-bottom: 1px solid #e0e0e0;
-  border-right: none;
   padding: 12px;
+
+}
+
+table.cookbooks th {
+  font-size: .875rem;
   font-weight: normal;
+  line-height: 1.25rem;
 }
 
 table.cookbooks thead {
