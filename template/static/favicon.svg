@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect fill="#434343" stroke="#434343" width="512" height="512" />
+  <polyline
+    fill="#797979"
+    points="79.05 434 270.19 434 309.57 394.62 79.05 394.62"
+  />
+  <polyline
+    fill="#797979"
+    points="142.76 370.29 333.91 370.29 373.29 330.91 142.76 330.91"
+  />
+  <polyline
+    fill="#797979"
+    points="206.48 306.57 397.62 306.57 437 267.19 206.48 267.19"
+  />
+  <polyline
+    fill="white"
+    points="309.57 203.48 309.57 394.62 270.19 434 270.19 203.48"
+  />
+  <polyline
+    fill="white"
+    points="373.29 139.76 373.29 330.91 333.91 370.29 333.91 139.76"
+  />
+  <polyline
+    fill="white"
+    points="437 76.05 437 267.19 397.62 306.57 397.62 76.05"
+  />
+</svg>

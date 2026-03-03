@@ -1,0 +1,9 @@
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+# Build script
+build
+
+# Ruff
+.ruff_cache

@@ -1,0 +1,20 @@
+<div class="notebook-header">
+  <h1>{{ resources.notebook_meta.title }}</h1>
+  <div class="meta">
+    <div class="authors">
+      <div class="author-avatars">
+        {% for author in resources.notebook_meta.authors %}
+        <img src="{{ author.avatar }}" alt="{{ author.name }}" class="author-avatar">
+        {% endfor %}
+      </div>
+      <div class="author-info">
+        <span class="author-names">
+          {{ resources.notebook_meta.authors | map(attribute='name') | join(', ') }}
+        </span>
+        {% if resources.notebook_meta.date %}
+        <span class="date">{{ resources.notebook_meta.date }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

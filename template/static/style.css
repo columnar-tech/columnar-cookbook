@@ -1,0 +1,154 @@
+:root {
+  --sans-serif: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
+  --monospace: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --content-max-width: 900px;
+}
+
+body {
+  --jp-content-font-family: var(--sans-serif);
+  --jp-code-font-family-default: var(--monospace);
+  --jp-notebook-padding: 0;
+
+  margin: 0;
+  font-family: var(--jp-content-font-family);
+}
+
+main {
+  padding: 16px;
+}
+
+main h1 {
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+main .subheader {
+  margin: 0 0 32px 0;
+  font-size: 1.15rem;
+  color: #666;
+}
+
+body.jp-Notebook main {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.cm-editor.cm-s-jupyter .highlight pre {
+  padding: 12px !important;
+  font-family: var(--monospace) !important;
+}
+
+div.jp-InputArea-editor {
+  border-radius: 6px;
+}
+
+div.jp-RenderedText pre {
+  font-family: var(--monospace);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+#navbar {
+  font-family: var(--sans-serif);
+  font-size: 16px;
+  background-color: #434343;
+  padding: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+#navbar .navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#navbar .navbar-github {
+  display: flex;
+  align-items: center;
+  fill: #fff;
+}
+
+#navbar .navbar-github:hover {
+  opacity: 0.8;
+}
+
+table.cookbooks {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.cookbooks th,
+table.cookbooks td {
+  border-bottom: 1px solid #e0e0e0;
+  border-right: none;
+  padding: 12px;
+  font-weight: normal;
+}
+
+table.cookbooks thead {
+  text-align: left;
+  color: #434343;
+}
+
+table.cookbooks tbody tr:hover {
+  background-color: #f2f2f2;
+}
+
+.notebook-header {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.notebook-header h1 {
+  margin: 0 0 16px 0;
+  font-family: var(--sans-serif);
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.notebook-header .authors {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.notebook-header .author-avatars {
+  display: flex;
+}
+
+.notebook-header .author-avatars .author-avatar {
+  margin-left: -8px;
+  border: 2px solid #fff;
+  box-sizing: content-box;
+}
+
+.notebook-header .author-avatars .author-avatar:first-child {
+  margin-left: 0;
+}
+
+.notebook-header .author-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.notebook-header .author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}

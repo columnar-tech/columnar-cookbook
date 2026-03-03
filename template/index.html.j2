@@ -1,0 +1,31 @@
+{%- extends 'lab/index.html.j2' -%}
+
+{%- block html_head_js -%}
+{%- endblock html_head_js -%}
+
+{%- block html_head_js_mathjax -%}
+{%- endblock html_head_js_mathjax -%}
+
+{%- block html_head_js_mermaidjs -%}
+{%- endblock html_head_js_mermaidjs -%}
+
+{% block extra_css %}
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" type="image/x-icon" href="/favicon.svg">
+{% endblock extra_css %}
+
+{%- block body_header -%}
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+{% include 'navbar.html.j2' %}
+{% include 'header.html.j2' %}
+<main>
+{%- endblock body_header -%}
+
+{% block in_prompt -%}
+{%- endblock in_prompt %}
+
+{% block empty_in_prompt -%}
+{%- endblock empty_in_prompt %}
+
+{% block output_area_prompt %}
+{% endblock output_area_prompt %}

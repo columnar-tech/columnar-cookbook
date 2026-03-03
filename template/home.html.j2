@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Columnar Cookbook</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+{% include 'navbar.html.j2' %}
+<main>
+  <h1>Columnar Cookbook</h1>
+  <p class="subheader">Guides and examples for working with columnar data and Arrow-native tools</p>
+  <table class="cookbooks">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author(s)</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for entry in registry|sort(attribute='date', reverse=true) %}
+      <tr class="clickable-row" data-href="/{{ entry.path|replace('notebooks/', '')|replace('.ipynb', '') }}">
+          <td>{{ entry.title }}</td>
+          <td>{% for author_id in entry.authors %}{{ authors[author_id].name }}{% if not loop.last %}, {% endif %}{% endfor %}</td>
+          <td>{{ entry.date|format_date }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</main>
+  <script>
+    document.querySelectorAll('.clickable-row').forEach(row => {
+      row.addEventListener('click', () => {
+        window.location.href = row.dataset.href;
+      });
+      row.style.cursor = 'pointer';
+    });
+  </script>
+</body>
+</html>

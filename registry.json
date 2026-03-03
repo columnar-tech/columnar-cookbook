@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Getting Started with ADBC in Python",
+    "path": "notebooks/adbc-python.ipynb",
+    "date": "2026-03-02",
+    "authors": ["emil-sadek"]
+  },
+  {
+    "title": "Postgres Data Loading with dlt",
+    "path": "notebooks/dlt-postgres.ipynb",
+    "date": "2026-03-02",
+    "authors": ["emil-sadek"]
+  }
+]
