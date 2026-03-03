@@ -17,18 +17,6 @@ main {
   padding: 16px;
 }
 
-main h1 {
-  margin-bottom: 12px;
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-main .subheader {
-  margin: 0 0 32px 0;
-  font-size: 1.15rem;
-  color: #666;
-}
-
 body.jp-Notebook main {
   max-width: var(--content-max-width);
   margin: 0 auto;
@@ -104,6 +92,24 @@ table.cookbooks thead {
 
 table.cookbooks tbody tr:hover {
   background-color: #f2f2f2;
+}
+
+.header {
+  margin: 48px 0 64px 0;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0 0 32px 0;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.header p {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.6rem;
+  color: #666;
 }
 
 .notebook-header {
