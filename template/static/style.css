@@ -7,6 +7,9 @@
 body {
   --jp-content-font-family: var(--sans-serif);
   --jp-code-font-family-default: var(--monospace);
+  --jp-content-font-size1: 1rem;
+  --jp-code-font-size: 0.875rem;
+  --jp-ui-font-size1: 0.875rem;
   --jp-notebook-padding: 0;
 
   margin: 0;
@@ -40,7 +43,7 @@ div.jp-RenderedText pre {
 
 #navbar {
   font-family: var(--sans-serif);
-  font-size: 16px;
+  font-size: 1rem;
   background-color: #434343;
   padding: 12px;
   position: sticky;
@@ -134,7 +137,7 @@ table.cookbooks tbody tr:hover {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 14px;
+  font-size: .875rem;
 }
 
 .notebook-header .author-avatars {
