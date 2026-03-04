@@ -1,0 +1,14 @@
+name: continuous-integration
+on: [push]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: prefix-dev/setup-pixi@v0.9.4
+        with:
+          pixi-version: v0.65.0
+          cache: true
+      - run: pixi run ruff check --output-format=github
+      - run: pixi run ty check --output-format=github
+      - run: pixi run validate
