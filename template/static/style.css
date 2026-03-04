@@ -124,7 +124,7 @@ table.cookbooks tbody tr:hover {
 }
 
 .notebook-header h1 {
-  margin: 0 0 16px 0;
+  margin: 0 0 32px 0;
   font-family: var(--sans-serif);
   font-size: 2rem;
   font-weight: 500;
