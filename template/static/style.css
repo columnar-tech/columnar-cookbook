@@ -35,6 +35,25 @@ div.jp-InputArea-editor {
   border-radius: 6px;
 }
 
+.jp-OutputArea {
+  border: var(--jp-border-width) solid var(--jp-cell-editor-border-color);
+  border-radius: 6px;
+}
+
+.jp-RenderedText.jp-OutputArea-output {
+  padding: 12px !important;
+}
+
+@media only screen and (max-width: 760px) {
+  .jp-OutputArea {
+    border-radius: 0;
+  }
+
+  .jp-RenderedText.jp-OutputArea-output pre {
+    padding: 12px;
+  }
+}
+
 div.jp-RenderedText pre {
   font-family: var(--monospace);
   font-optical-sizing: auto;
