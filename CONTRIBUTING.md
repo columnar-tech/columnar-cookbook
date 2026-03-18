@@ -33,6 +33,23 @@ Potential security vulnerabilities should be reported to security@columnar.tech.
     pixi run serve
     ```
 
+## Adding a Recipe
+
+### Create the Notebook
+
+Place your notebook in the `notebooks/` directory with a descriptive kebab-case filename (e.g., `connect-to-mysql-with-adbc-in-python.ipynb`, `ingest-parquet-data-into-mariadb-with-adbc.ipynb`).
+Start the notebook with an introductory Markdown cell that explains the topic, the tools used, and the requirements.
+See the existing notebooks for reference.
+
+### Register the Notebook
+
+Add an entry to `registry.json` following the format of the existing entries.
+Author IDs in your entry must match a key in `authors.json`.
+
+### Add Yourself as an Author
+
+If you are a first-time contributor, add an entry to `authors.json` following the format of the existing entries.
+
 ## Code Quality
 
 This repository uses automated tools to maintain code quality:
@@ -42,7 +59,7 @@ This repository uses automated tools to maintain code quality:
 - [nbformat](https://nbformat.readthedocs.io/): Jupyter notebook validation
 - [nbconvert](https://nbconvert.readthedocs.io/): Jupyter notebook execution
 
-### Before Commiting
+### Before Committing
 
 1. Run formatting, linting, type checking, and validation:
 
@@ -53,11 +70,17 @@ This repository uses automated tools to maintain code quality:
     pixi run validate
     ```
 
-2. Test notebook execution:
+2. Test notebook execution (replace `<your-notebook>` with your notebook's filename):
 
     ```sh
     pixi run jupyter nbconvert \
     --to notebook \
-    --execute notebooks/duckdb.ipynb \
+    --execute notebooks/<your-notebook>.ipynb \
     --output test_output.ipynb
+    ```
+
+3. Clean up the test output (do not commit this file):
+
+    ```sh
+    rm notebooks/test_output.ipynb
     ```
