@@ -9,7 +9,7 @@ build = "python scripts/build.py"
 serve = "python -m http.server -d build"
 format = "ruff format"
 lint = "ruff check --fix"
-check-types = "ty check"
+check-types = "ty check scripts"
 validate = "python scripts/validate.py"
 
 [dependencies]
