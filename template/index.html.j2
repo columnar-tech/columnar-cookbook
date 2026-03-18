@@ -9,6 +9,10 @@
 {%- block html_head_js_mermaidjs -%}
 {%- endblock html_head_js_mermaidjs -%}
 
+{%- block html_head_css -%}
+<meta name="description" content="{{ resources.notebook_meta.description }}">
+{%- endblock html_head_css -%}
+
 {% block extra_css %}
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" type="image/x-icon" href="/favicon.svg">

@@ -18,6 +18,7 @@ class RegistryEntry(BaseModel):
     path: str
     date: date
     authors: list[str]
+    description: str
 
 
 class Author(BaseModel):
@@ -77,6 +78,7 @@ def build_notebooks(registry: list[RegistryEntry], authors: dict[str, Author]) -
             "date": format_date(entry.date),
             "authors": [authors[a] for a in entry.authors],
             "github_url": f"https://github.com/columnar-tech/columnar-cookbook/blob/main/{entry.path}",
+            "description": entry.description,
         }
         resources = {"notebook_meta": notebook_meta}
         (body, _) = html_exporter.from_notebook_node(notebook, resources=resources)
