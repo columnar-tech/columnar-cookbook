@@ -21,6 +21,12 @@
 <main>
 {%- endblock body_header -%}
 
+{%- block body_footer -%}
+</main>
+{% include 'components/footer.html.j2' %}
+</body>
+{%- endblock body_footer -%}
+
 {% block in_prompt -%}
 {%- endblock in_prompt %}
 
