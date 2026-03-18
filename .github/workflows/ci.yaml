@@ -9,6 +9,7 @@ jobs:
         with:
           pixi-version: v0.65.0
           cache: true
+      - run: pixi run ruff format --check
       - run: pixi run ruff check --output-format=github
       - run: pixi run ty check --output-format=github scripts
       - run: pixi run validate
