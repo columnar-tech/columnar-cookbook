@@ -117,6 +117,15 @@ table.cookbooks th {
   line-height: 1.25rem;
 }
 
+table.cookbooks td:nth-child(n+2) {
+  font-size: 0.875rem;
+}
+
+table.cookbooks th:nth-child(2),
+table.cookbooks td:nth-child(2) {
+  text-align: right;
+}
+
 table.cookbooks thead {
   text-align: left;
   color: #434343;
@@ -143,6 +152,43 @@ table.cookbooks tbody tr:hover {
   font-size: 1.15rem;
   line-height: 1.6rem;
   color: #666;
+}
+
+.contribution {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.375rem;
+  margin-top: 6rem;
+  padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+}
+
+.contribution p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.contribution a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  color: #000;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.contribution a:hover {
+  border-color: #666;
+}
+
+.contribution svg {
+  display: block;
+  flex-shrink: 0;
+  stroke: #666;
 }
 
 .notebook-header {
@@ -198,7 +244,17 @@ table.cookbooks tbody tr:hover {
   justify-content: space-between;
 }
 
-.notebook-header .github-button {
+.notebook-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -209,11 +265,11 @@ table.cookbooks tbody tr:hover {
   white-space: nowrap;
 }
 
-.notebook-header .github-button:hover {
+.button:hover {
   border-color: #666;
 }
 
-.notebook-header .github-button svg {
+.button svg {
   display: block;
   flex-shrink: 0;
   stroke: #666;
