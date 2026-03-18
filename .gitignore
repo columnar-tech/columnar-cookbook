@@ -4,6 +4,7 @@
 
 # Build script
 build
+__pycache__/
 
 # Ruff
 .ruff_cache

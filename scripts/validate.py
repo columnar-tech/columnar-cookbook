@@ -1,9 +1,31 @@
 from pathlib import Path
 
 import nbformat
+from schemas import (
+    Author,
+    RegistryEntry,
+    load_authors,
+    load_registry,
+)
 
 ROOT = Path(__file__).parent.parent
 NOTEBOOKS_DIR = ROOT / "notebooks"
+
+
+def validate_registry(registry: list[RegistryEntry], authors: dict[str, Author]) -> int:
+    missing: list[tuple[str, str]] = []
+    for entry in registry:
+        for author_id in entry.authors:
+            if author_id not in authors:
+                missing.append((entry.path, author_id))
+
+    if missing:
+        details = "\n".join(f'  - {path}: "{author_id}"' for path, author_id in missing)
+        print(f"Unknown author IDs in registry:\n{details}")
+        return 1
+
+    print("Registry valid")
+    return 0
 
 
 def validate_notebooks() -> int:
@@ -32,4 +54,10 @@ def validate_notebooks() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(validate_notebooks())
+    registry = load_registry()
+    authors = load_authors()
+
+    registry_exit_code = validate_registry(registry, authors)
+    notebook_exit_code = validate_notebooks()
+
+    raise SystemExit(registry_exit_code or notebook_exit_code)

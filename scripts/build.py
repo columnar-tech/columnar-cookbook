@@ -5,45 +5,17 @@ from shutil import copy
 import nbformat
 from jinja2 import Environment, FileSystemLoader
 from nbconvert import HTMLExporter
-from pydantic import BaseModel, HttpUrl, TypeAdapter
+from schemas import (
+    Author,
+    RegistryEntry,
+    load_authors,
+    load_registry,
+)
 from traitlets.config import Config
 
 ROOT = Path(__file__).parent.parent
 BUILD_DIR = ROOT / "build"
 TEMPLATE = "template"
-
-
-class RegistryEntry(BaseModel):
-    title: str
-    path: str
-    date: date
-    authors: list[str]
-    description: str
-
-
-class Author(BaseModel):
-    name: str
-    avatar: HttpUrl
-
-
-def load_registry() -> list[RegistryEntry]:
-    return TypeAdapter(list[RegistryEntry]).validate_json((ROOT / "registry.json").read_bytes())
-
-
-def load_authors() -> dict[str, Author]:
-    return TypeAdapter(dict[str, Author]).validate_json((ROOT / "authors.json").read_bytes())
-
-
-def validate_registry(registry: list[RegistryEntry], authors: dict[str, Author]) -> None:
-    missing: list[tuple[str, str]] = []
-    for entry in registry:
-        for author_id in entry.authors:
-            if author_id not in authors:
-                missing.append((entry.path, author_id))
-
-    if missing:
-        details = "\n".join(f'  - {path}: "{author_id}"' for path, author_id in missing)
-        raise ValueError(f"Unknown author IDs in registry:\n{details}")
 
 
 def copy_static_files() -> None:
@@ -111,7 +83,6 @@ if __name__ == "__main__":
     BUILD_DIR.mkdir(parents=True, exist_ok=True)
     registry = load_registry()
     authors = load_authors()
-    validate_registry(registry, authors)
     build_notebooks(registry, authors)
     build_home_page(registry, authors)
     copy_static_files()
