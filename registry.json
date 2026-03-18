@@ -1,14 +1,79 @@
 [
   {
-    "title": "Getting Started with ADBC in Python",
-    "path": "notebooks/adbc-python.ipynb",
-    "date": "2026-03-02",
-    "authors": ["emil-sadek"]
+    "title": "Connect to MySQL with ADBC in Python",
+    "path": "notebooks/connect-to-mysql-with-adbc-in-python.ipynb",
+    "date": "2026-03-09",
+    "authors": ["emil-sadek"],
+    "description": "Connect to MySQL from Python using ADBC and Apache Arrow for efficient columnar data access, queries, and bulk ingestion."
   },
   {
-    "title": "Postgres Data Loading with dlt",
-    "path": "notebooks/dlt-postgres.ipynb",
-    "date": "2026-03-02",
-    "authors": ["emil-sadek"]
+    "title": "Connect to MariaDB with ADBC in Python",
+    "path": "notebooks/connect-to-mariadb-with-adbc-in-python.ipynb",
+    "date": "2026-03-09",
+    "authors": ["emil-sadek"],
+    "description": "Connect to MariaDB from Python using ADBC and Apache Arrow for efficient columnar data access, queries, and bulk ingestion."
+  },
+  {
+    "title": "Connect to TiDB with ADBC in Python",
+    "path": "notebooks/connect-to-tidb-with-adbc-in-python.ipynb",
+    "date": "2026-03-09",
+    "authors": ["emil-sadek"],
+    "description": "Connect to TiDB from Python using ADBC and Apache Arrow for efficient columnar data access, queries, and bulk ingestion."
+  },
+  {
+    "title": "Connect to PostgreSQL with ADBC in Python",
+    "path": "notebooks/connect-to-postgresql-with-adbc-in-python.ipynb",
+    "date": "2026-03-09",
+    "authors": ["emil-sadek"],
+    "description": "Connect to PostgreSQL from Python using ADBC and Apache Arrow for efficient columnar data access, queries, and bulk ingestion."
+  },
+  {
+    "title": "Connect to Citus with ADBC in Python",
+    "path": "notebooks/connect-to-citus-with-adbc-in-python.ipynb",
+    "date": "2026-03-09",
+    "authors": ["emil-sadek"],
+    "description": "Connect to Citus from Python using ADBC and Apache Arrow for efficient columnar data access, queries, and bulk ingestion."
+  },
+  {
+    "title": "Connect to ParadeDB with ADBC in Python",
+    "path": "notebooks/connect-to-paradedb-with-adbc-in-python.ipynb",
+    "date": "2026-03-09",
+    "authors": ["emil-sadek"],
+    "description": "Connect to ParadeDB from Python using ADBC and Apache Arrow for efficient columnar data access, queries, and bulk ingestion."
+  },
+  {
+    "title": "Connect to TimescaleDB with ADBC in Python",
+    "path": "notebooks/connect-to-timescaledb-with-adbc-in-python.ipynb",
+    "date": "2026-03-09",
+    "authors": ["emil-sadek"],
+    "description": "Connect to TimescaleDB from Python using ADBC and Apache Arrow for efficient columnar data access, queries, and bulk ingestion."
+  },
+  {
+    "title": "Connect to DuckDB with ADBC in Python",
+    "path": "notebooks/connect-to-duckdb-with-adbc-in-python.ipynb",
+    "date": "2026-03-09",
+    "authors": ["emil-sadek"],
+    "description": "Connect to DuckDB from Python using ADBC and Apache Arrow for efficient columnar data access, queries, and bulk ingestion."
+  },
+  {
+    "title": "Fast PostgreSQL Data Loading with dlt and ADBC",
+    "path": "notebooks/fast-postgresql-data-loading-with-dlt-and-adbc.ipynb",
+    "date": "2026-03-10",
+    "authors": ["emil-sadek"],
+    "description": "Load data into PostgreSQL up to 100x faster using dlt with Parquet and ADBC for high-performance bulk ingestion."
+  },
+  {
+    "title": "Fast MySQL Data Loading with dlt and ADBC",
+    "path": "notebooks/fast-mysql-data-loading-with-dlt-and-adbc.ipynb",
+    "date": "2026-03-10",
+    "authors": ["emil-sadek"],
+    "description": "Load data into MySQL up to 100x faster using dlt with Parquet and ADBC for high-performance bulk ingestion."
+  },
+  {
+    "title": "Ingest Parquet Data into MariaDB with ADBC",
+    "path": "notebooks/ingest-parquet-data-into-mariadb-with-adbc.ipynb",
+    "date": "2026-03-12",
+    "authors": ["emil-sadek"],
+    "description": "Ingest Parquet files into MariaDB efficiently using ADBC and Apache Arrow for fast columnar bulk ingestion."
   }
 ]
