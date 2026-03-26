@@ -15,6 +15,10 @@
     <h1>Columnar Cookbook</h1>
     <p>Guides and examples for working with columnar data and Arrow-native tools</p>
   </div>
+  <div class="search-container">
+    <label for="cookbook-search" class="visually-hidden">Search cookbooks</label>
+    <input type="text" id="cookbook-search" placeholder="Search cookbooks..." autocomplete="off">
+  </div>
   <table class="cookbooks">
     <thead>
       <tr>
@@ -29,6 +33,9 @@
           <td>{{ entry.date|format_date }}</td>
       </tr>
     {% endfor %}
+      <tr id="no-results" style="display: none;">
+        <td colspan="2" class="no-results">No cookbooks found</td>
+      </tr>
     </tbody>
   </table>
   <div class="contribution">
@@ -45,6 +52,24 @@
         window.location.href = row.dataset.href;
       });
       row.style.cursor = 'pointer';
+    });
+
+    const searchInput = document.getElementById('cookbook-search');
+    const rows = document.querySelectorAll('.cookbooks tbody .clickable-row');
+    const noResults = document.getElementById('no-results');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        const title = row.querySelector('td:first-child').textContent.toLowerCase();
+        const matches = title.includes(query);
+        row.style.display = matches ? '' : 'none';
+        if (matches) visibleCount++;
+      });
+
+      noResults.style.display = visibleCount === 0 ? '' : 'none';
     });
   </script>
 </body>
