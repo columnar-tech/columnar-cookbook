@@ -1,17 +1,21 @@
 from datetime import date
 from pathlib import Path
+from typing import Annotated, Literal
 
-from pydantic import BaseModel, HttpUrl, TypeAdapter
+from pydantic import BaseModel, Field, HttpUrl, TypeAdapter
 
 _ROOT = Path(__file__).parent.parent
+
+Category = Literal["Database Connections", "Data Loading"]
 
 
 class RegistryEntry(BaseModel):
     title: str
     path: str
     date: date
-    authors: list[str]
+    authors: Annotated[list[str], Field(min_length=1)]
     description: str
+    categories: Annotated[list[Category], Field(min_length=1)]
 
 
 class Author(BaseModel):

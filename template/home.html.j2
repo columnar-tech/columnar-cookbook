@@ -23,6 +23,7 @@
     <thead>
       <tr>
         <th>Title</th>
+        <th>Categories</th>
         <th>Date</th>
       </tr>
     </thead>
@@ -30,11 +31,12 @@
     {% for entry in registry|sort(attribute='date', reverse=true) %}
       <tr class="clickable-row" data-href="/{{ entry.path|replace('notebooks/', '')|replace('.ipynb', '') }}">
           <td>{{ entry.title }}</td>
+          <td>{% for cat in entry.categories %}<span class="category" data-category="{{ cat }}">{{ cat }}</span>{% if not loop.last %}<span class="category-sep"> · </span>{% endif %}{% endfor %}</td>
           <td>{{ entry.date|format_date }}</td>
       </tr>
     {% endfor %}
       <tr id="no-results" style="display: none;">
-        <td colspan="2" class="no-results">No cookbooks found</td>
+        <td colspan="3" class="no-results">No cookbooks found</td>
       </tr>
     </tbody>
   </table>
@@ -44,9 +46,37 @@
       <span>Contribution guide</span>
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-up-right-icon lucide-move-up-right"><path d="M13 5H19V11"/><path d="M19 5L5 19"/></svg>
     </a>
-  </div>
+</div>
 </main>
   <script>
+    // Vibrant color palette for categories
+    const categoryColors = [
+      "#22c55e", // green
+      "#14b8a6", // teal
+      "#3b82f6", // blue
+      "#a855f7", // purple
+      "#ec4899", // pink
+      "#06b6d4", // cyan
+      "#10b981", // emerald
+    ];
+
+    // Simple hash function for consistent color assignment
+    function hashString(str) {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        hash = ((hash << 5) - hash) + str.charCodeAt(i);
+        hash = hash & hash;
+      }
+      return Math.abs(hash);
+    }
+
+    // Assign colors to categories
+    document.querySelectorAll('.category').forEach(el => {
+      const category = el.dataset.category;
+      const colorIndex = hashString(category) % categoryColors.length;
+      el.style.color = categoryColors[colorIndex];
+    });
+
     document.querySelectorAll('.clickable-row').forEach(row => {
       row.addEventListener('click', () => {
         window.location.href = row.dataset.href;
@@ -64,7 +94,8 @@
 
       rows.forEach(row => {
         const title = row.querySelector('td:first-child').textContent.toLowerCase();
-        const matches = title.includes(query);
+        const categories = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+        const matches = title.includes(query) || categories.includes(query);
         row.style.display = matches ? '' : 'none';
         if (matches) visibleCount++;
       });
