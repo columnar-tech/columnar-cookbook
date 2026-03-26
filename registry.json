@@ -75,5 +75,19 @@
     "date": "2026-03-12",
     "authors": ["emil-sadek"],
     "description": "Ingest Parquet files into MariaDB efficiently using ADBC and Apache Arrow for fast columnar bulk ingestion."
+  },
+  {
+    "title": "Connect to ClickHouse with ADBC in Python",
+    "path": "notebooks/connect-to-clickhouse-with-adbc-in-python.ipynb",
+    "date": "2026-03-24",
+    "authors": ["emil-sadek"],
+    "description": "Connect to ClickHouse from Python using ADBC and Apache Arrow for efficient columnar data access and queries."
+  },
+  {
+    "title": "Connect to DuckLake with ADBC in Python",
+    "path": "notebooks/connect-to-ducklake-with-adbc-in-python.ipynb",
+    "date": "2026-03-25",
+    "authors": ["emil-sadek"],
+    "description": "Connect to DuckLake from Python using ADBC and Apache Arrow for efficient columnar data access, queries, and bulk ingestion."
   }
 ]
