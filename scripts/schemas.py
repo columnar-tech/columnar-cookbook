@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field, HttpUrl, TypeAdapter
 
 _ROOT = Path(__file__).parent.parent
 
-Category = Literal["Database Connections", "Data Loading"]
+Category = Literal["Database Connections", "Data Loading", "Data Analysis"]
 
 
 class RegistryEntry(BaseModel):
