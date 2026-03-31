@@ -102,5 +102,13 @@
     "authors": ["emil-sadek"],
     "description": "Connect to DuckLake from Python using ADBC and Apache Arrow for efficient columnar data access, queries, and bulk ingestion.",
     "categories": ["Database Connections"]
+  },
+  {
+    "title": "Exploratory Data Analysis with PyArrow",
+    "path": "notebooks/exploratory-data-analysis-with-pyarrow.ipynb",
+    "date": "2026-03-31",
+    "authors": ["emil-sadek"],
+    "description": "Perform exploratory data analysis on the Palmer Penguins dataset using PyArrow compute functions for efficient columnar data processing.",
+    "categories": ["Data Analysis"]
   }
 ]
