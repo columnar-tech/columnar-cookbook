@@ -11,6 +11,12 @@
 
 {%- block html_head_css -%}
 <meta name="description" content="{{ resources.notebook_meta.description }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ resources.notebook_meta.title }}">
+<meta property="og:description" content="{{ resources.notebook_meta.description }}">
+<meta property="og:image" content="{{ resources.notebook_meta.og_image_url }}">
+<meta property="og:url" content="{{ resources.notebook_meta.page_url }}">
+<meta property="og:site_name" content="Columnar Cookbook">
 {%- endblock html_head_css -%}
 
 {% block extra_css %}

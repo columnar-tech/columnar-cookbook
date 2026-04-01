@@ -5,17 +5,20 @@ from shutil import copy
 import nbformat
 from jinja2 import Environment, FileSystemLoader
 from nbconvert import HTMLExporter
-from schemas import (
+from traitlets.config import Config
+
+from .og_image import generate_og_image
+from .schemas import (
     Author,
     RegistryEntry,
     load_authors,
     load_registry,
 )
-from traitlets.config import Config
 
 ROOT = Path(__file__).parent.parent
 BUILD_DIR = ROOT / "build"
 TEMPLATE = "template"
+SITE_URL = "https://cookbook.columnar.tech"
 
 
 def copy_static_files() -> None:
@@ -43,19 +46,32 @@ def build_notebooks(registry: list[RegistryEntry], authors: dict[str, Author]) -
 
     for entry in registry:
         notebook_path = ROOT / entry.path
+        notebook_slug = notebook_path.stem
         notebook = nbformat.reads(notebook_path.read_text(encoding="utf-8"), as_version=4)
         notebook.metadata["title"] = entry.title
+
+        og_image_filename = "og.png"
+        og_image_path = BUILD_DIR / notebook_slug / og_image_filename
+        generate_og_image(
+            title=entry.title,
+            description=entry.description,
+            output_path=og_image_path,
+        )
+        print(f"Generated: {og_image_path}")
+
         notebook_meta = {
             "title": entry.title,
             "date": format_date(entry.date),
             "authors": [authors[a] for a in entry.authors],
             "github_url": f"https://github.com/columnar-tech/columnar-cookbook/blob/main/{entry.path}",
             "description": entry.description,
+            "og_image_url": f"{SITE_URL}/{notebook_slug}/{og_image_filename}",
+            "page_url": f"{SITE_URL}/{notebook_slug}",
         }
         resources = {"notebook_meta": notebook_meta}
         (body, _) = html_exporter.from_notebook_node(notebook, resources=resources)
 
-        build_path = BUILD_DIR / notebook_path.stem / "index.html"
+        build_path = BUILD_DIR / notebook_slug / "index.html"
         build_path.parent.mkdir(exist_ok=True)
         build_path.write_text(body, encoding="utf-8")
 

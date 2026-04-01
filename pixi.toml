@@ -5,12 +5,12 @@ channels = ["conda-forge"]
 platforms = ["linux-64", "osx-arm64"]
 
 [tasks]
-build = "python scripts/build.py"
+build = "python -m scripts.build"
 serve = "python -m http.server -d build"
 format = "ruff format"
 lint = "ruff check --fix"
 check-types = "ty check scripts"
-validate = "python scripts/validate.py"
+validate = "python -m scripts.validate"
 
 [dependencies]
 nbconvert = ">=7.17.0,<8"
@@ -20,3 +20,4 @@ jinja2 = ">=3.1.6,<4"
 pip = ">=26.0.1,<27"
 ty = ">=0.0.18,<0.0.19"
 pydantic = ">=2.12.5,<3"
+pillow = ">=12.1.1,<13"

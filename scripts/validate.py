@@ -1,7 +1,8 @@
 from pathlib import Path
 
 import nbformat
-from schemas import (
+
+from .schemas import (
     Author,
     RegistryEntry,
     load_authors,
