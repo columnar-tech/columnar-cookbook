@@ -160,7 +160,8 @@ table.cookbooks tbody tr:hover {
   justify-content: space-between;
   border: 1px solid #e0e0e0;
   border-radius: 0.375rem;
-  margin-top: 6rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
   padding: 1.25rem 1.5rem 1.25rem 1.5rem;
 }
 
@@ -251,7 +252,7 @@ table.cookbooks tbody tr:hover {
   gap: 1rem;
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 2rem 1.5rem 3rem 1.5rem;
 }
 
 .button {
@@ -328,11 +329,11 @@ table.cookbooks tbody tr:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  font-size: 0.8125rem;
-  color: #999;
+  padding: 0.75rem;
+  font-family: var(--sans-serif);
+  font-size: 0.75rem;
+  border-top: 1px solid #e0e0e0;
+  color: #666;
 }
 
 .site-footer nav {
@@ -341,12 +342,11 @@ table.cookbooks tbody tr:hover {
 }
 
 .site-footer a {
-  color: #999;
+  color: #666;
   text-decoration: none;
 }
 
 .site-footer a:hover {
-  color: #666;
   text-decoration: underline;
 }
 
