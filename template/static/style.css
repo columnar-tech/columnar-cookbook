@@ -84,6 +84,11 @@ div.jp-RenderedText pre {
   text-decoration: none;
 }
 
+#navbar svg {
+  width: 24px;
+  height: 24px;
+}
+
 #navbar .navbar-logo {
   display: flex;
   align-items: center;
