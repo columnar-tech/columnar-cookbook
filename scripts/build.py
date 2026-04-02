@@ -22,7 +22,7 @@ SITE_URL = "https://cookbook.columnar.tech"
 
 
 def copy_static_files() -> None:
-    files: list[str] = ["style.css", "favicon.svg"]
+    files: list[str] = ["style.css", "favicon.svg", "og.png"]
     for file in files:
         source = ROOT / TEMPLATE / "static" / file
         destination = BUILD_DIR / file
