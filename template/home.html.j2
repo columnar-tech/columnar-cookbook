@@ -56,7 +56,7 @@
     {% for entry in registry|sort(attribute='date', reverse=true) %}
       <tr class="clickable-row" data-href="/{{ entry.path|replace('notebooks/', '')|replace('.ipynb', '') }}">
           <td>{{ entry.title }}</td>
-          <td>{% for cat in entry.categories %}<span class="category" data-category="{{ cat }}">{{ cat }}</span>{% if not loop.last %}<span class="category-sep"> · </span>{% endif %}{% endfor %}</td>
+          <td>{% for cat in entry.categories %}<span class="category">{{ cat }}</span>{% if not loop.last %}<span class="category-sep"> · </span>{% endif %}{% endfor %}</td>
           <td>{{ entry.date|format_date }}</td>
       </tr>
     {% endfor %}
@@ -74,34 +74,6 @@
 </div>
 </main>
   <script>
-    // Vibrant color palette for categories
-    const categoryColors = [
-      "#22c55e", // green
-      "#14b8a6", // teal
-      "#3b82f6", // blue
-      "#a855f7", // purple
-      "#ec4899", // pink
-      "#06b6d4", // cyan
-      "#10b981", // emerald
-    ];
-
-    // Simple hash function for consistent color assignment
-    function hashString(str) {
-      let hash = 0;
-      for (let i = 0; i < str.length; i++) {
-        hash = ((hash << 5) - hash) + str.charCodeAt(i);
-        hash = hash & hash;
-      }
-      return Math.abs(hash);
-    }
-
-    // Assign colors to categories
-    document.querySelectorAll('.category').forEach(el => {
-      const category = el.dataset.category;
-      const colorIndex = hashString(category) % categoryColors.length;
-      el.style.color = categoryColors[colorIndex];
-    });
-
     document.querySelectorAll('.clickable-row').forEach(row => {
       row.addEventListener('click', () => {
         window.location.href = row.dataset.href;
