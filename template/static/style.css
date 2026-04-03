@@ -403,6 +403,11 @@ table.cookbooks tbody tr:hover {
   fill: #fff;
 }
 
+.featured-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .featured-card-title {
   margin-top: 0.75rem;
   font-size: 1rem;
@@ -411,9 +416,10 @@ table.cookbooks tbody tr:hover {
 }
 
 .featured-card-category {
-  margin-top: 0.25rem;
-  font-size: 0.8125rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
   text-align: left;
+  color: #666;
 }
 
 @media (max-width: 600px) {
