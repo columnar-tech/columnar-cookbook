@@ -1,6 +1,8 @@
-from livereload import Server
-from .build import ROOT, BUILD_DIR
 import subprocess
+
+from livereload import Server
+
+from .build import BUILD_DIR, ROOT
 
 
 def build() -> None:
@@ -21,5 +23,5 @@ if __name__ == "__main__":
     server.watch(str(ROOT / "authors.json"), build)
 
     # Serve the build directory
-    print(f"Starting live-reload server on http://localhost:8000")
+    print("Starting live-reload server on http://localhost:8000")
     server.serve(root=str(BUILD_DIR), port=8000)
