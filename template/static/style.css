@@ -664,9 +664,11 @@ table.cookbooks tbody tr:hover {
   padding: 0.2rem 0.5rem;
   border-radius: 999px;
   max-width: 100%;
+  box-sizing: border-box;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  min-width: 0;
 }
 
 
