@@ -84,7 +84,7 @@ div.jp-RenderedText pre {
   text-decoration: none;
 }
 
-#navbar svg {
+#navbar .navbar-github svg {
   width: 24px;
   height: 24px;
 }
@@ -92,15 +92,11 @@ div.jp-RenderedText pre {
 #navbar .navbar-logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
 }
 
-#navbar .navbar-logo .logo-primary {
-  font-weight: 500;
-}
-
-#navbar .navbar-logo .logo-secondary {
-  font-weight: 300;
+#navbar .navbar-logo svg {
+  height: 30px;
+  width: auto;
 }
 
 #navbar .navbar-github {
