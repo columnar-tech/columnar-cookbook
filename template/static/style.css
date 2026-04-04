@@ -58,6 +58,7 @@ div.jp-InputArea-editor {
   .jp-RenderedText.jp-OutputArea-output pre {
     padding: 0.75rem;
   }
+
 }
 
 div.jp-RenderedText pre {
@@ -246,7 +247,7 @@ table.cookbooks tbody tr:hover {
 .notebook-header {
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 2rem 1.5rem 1rem;
 }
 
 .notebook-header h1 {
@@ -291,20 +292,38 @@ table.cookbooks tbody tr:hover {
 }
 
 .notebook-header .meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.notebook-header .meta-right {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
   align-items: center;
   gap: 0.75rem;
 }
 
+.notebook-header .meta .authors {
+  grid-column: 1;
+}
+
+.notebook-header .meta .button {
+  grid-column: -2;
+  grid-row: 1;
+}
+
 .notebook-categories {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.375rem;
+  grid-column: 2 / -2;
+  grid-row: 1;
+}
+
+@media (max-width: 600px) {
+  .notebook-header .meta {
+    grid-template-columns: 1fr auto;
+  }
+
+  .notebook-categories {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
 }
 
 .notebook-footer {
@@ -681,9 +700,37 @@ table.cookbooks tbody tr:hover {
   }
 }
 
+.github-label-short,
+.back-label-short,
+.footer-label-short {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .footer-label-full {
+    display: none;
+  }
+
+  .footer-label-short {
+    display: inline;
+  }
+}
+
 @media (max-width: 380px) {
   table.cookbooks th:nth-child(3),
   table.cookbooks td:nth-child(3) {
     display: none;
+  }
+}
+
+@media (max-width: 375px) {
+  .github-label-full,
+  .back-label-full {
+    display: none;
+  }
+
+  .github-label-short,
+  .back-label-short {
+    display: inline;
   }
 }

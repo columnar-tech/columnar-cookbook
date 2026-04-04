@@ -16,15 +16,13 @@
         {% endif %}
       </div>
     </div>
-    <div class="meta-right">
-      {% if resources.notebook_meta.categories %}
-      <div class="notebook-categories">
-        {% for cat in resources.notebook_meta.categories %}
-        <span class="category">{{ cat }}</span>
-        {% endfor %}
-      </div>
-      {% endif %}
-      {% include 'components/github-button.html.j2' %}
+    {% if resources.notebook_meta.categories %}
+    <div class="notebook-categories">
+      {% for cat in resources.notebook_meta.categories %}
+      <span class="category">{{ cat }}</span>
+      {% endfor %}
     </div>
+    {% endif %}
+    {% include 'components/github-button.html.j2' %}
   </div>
 </div>
