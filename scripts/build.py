@@ -47,6 +47,7 @@ def get_og_mtime() -> float:
     mtimes = [p.stat().st_mtime for p in paths if p.is_file()]
     return max(mtimes) if mtimes else 0.0
 
+
 def get_html_mtime() -> float:
     paths = []
     paths.extend((ROOT / TEMPLATE).rglob("*.j2"))
@@ -55,6 +56,7 @@ def get_html_mtime() -> float:
     paths.append(ROOT / "authors.json")
     mtimes = [p.stat().st_mtime for p in paths if p.is_file()]
     return max(mtimes) if mtimes else 0.0
+
 
 def build_notebooks(registry: list[RegistryEntry], authors: dict[str, Author]) -> None:
     html_exporter = load_exporter()
@@ -65,11 +67,11 @@ def build_notebooks(registry: list[RegistryEntry], authors: dict[str, Author]) -
         notebook_path = ROOT / entry.path
         notebook_slug = notebook_path.stem
         nb_mtime = notebook_path.stat().st_mtime
-        
+
         build_path = BUILD_DIR / notebook_slug / "index.html"
         og_image_filename = "og.png"
         og_image_path = BUILD_DIR / notebook_slug / og_image_filename
-        
+
         needs_html = True
         if build_path.exists():
             if build_path.stat().st_mtime >= max(nb_mtime, html_mtime):
