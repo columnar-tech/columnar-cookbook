@@ -103,10 +103,18 @@ div.jp-RenderedText pre {
   display: flex;
   align-items: center;
   fill: #fff;
+  margin-right: 5px;
 }
 
 #navbar .navbar-github:hover {
   opacity: 0.8;
+}
+
+.table-wrapper {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.375rem;
+  padding: 0.75rem;
 }
 
 table.cookbooks {
@@ -114,16 +122,49 @@ table.cookbooks {
   border-collapse: collapse;
 }
 
-table.cookbooks th,
+table.cookbooks th {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
 table.cookbooks td {
   border-bottom: 1px solid #e0e0e0;
   padding: 0.75rem;
+}
+
+table.cookbooks tbody tr:last-child td {
+  border-bottom: none;
 }
 
 table.cookbooks th {
   font-size: 0.875rem;
   font-weight: normal;
   line-height: 1.25rem;
+}
+
+table.cookbooks th.sortable {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+table.cookbooks th.sortable::after {
+  content: ' ↕';
+  color: #999;
+}
+
+table.cookbooks th.sortable.asc::after {
+  content: ' ↑';
+  color: #434343;
+}
+
+table.cookbooks th.sortable.desc::after {
+  content: ' ↓';
+  color: #434343;
+}
+
+table.cookbooks td:nth-child(2) .category {
+  margin-left: 0.25rem;
 }
 
 table.cookbooks td:nth-child(n+2) {
@@ -145,13 +186,13 @@ table.cookbooks tbody tr:hover {
 }
 
 .header {
-  margin-top: 5rem;
-  margin-bottom: 6rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
   text-align: center;
 }
 
 .header h1 {
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 0.5rem 0;
   font-size: 2rem;
   font-weight: 500;
 }
@@ -167,11 +208,12 @@ table.cookbooks tbody tr:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
+  background-color: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 0.375rem;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-  padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
 }
 
 .contribution p {
@@ -254,6 +296,17 @@ table.cookbooks tbody tr:hover {
   justify-content: space-between;
 }
 
+.notebook-header .meta-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.notebook-categories {
+  display: flex;
+  gap: 0.375rem;
+}
+
 .notebook-footer {
   display: flex;
   align-items: center;
@@ -285,11 +338,34 @@ table.cookbooks tbody tr:hover {
   stroke: #666;
 }
 
-.search-container {
+.section {
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.375rem;
+  padding: 2rem;
   margin-bottom: 1.5rem;
 }
 
-.search-container input {
+.section-heading {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0 0 1.5rem 0;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-input-wrapper {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.search-input-wrapper input {
   width: 100%;
   padding: 0.75rem;
   font-family: var(--sans-serif);
@@ -297,6 +373,141 @@ table.cookbooks tbody tr:hover {
   border: 1px solid #e0e0e0;
   border-radius: 0.375rem;
   box-sizing: border-box;
+}
+
+.search-input-wrapper .search-icon {
+  display: none;
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+}
+
+.search-container.show-icon .search-icon {
+  display: block;
+}
+
+.search-container.show-icon input {
+  padding-left: 2.25rem;
+}
+
+.search-clear {
+  display: none;
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.search-clear svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.search-clear:hover svg {
+  stroke: #434343;
+}
+
+.search-container.has-value .search-clear {
+  display: block;
+}
+
+.search-container.has-value input {
+  padding-right: 2rem;
+}
+
+.search-container.show-icon .search-clear {
+  display: none;
+}
+
+.search-focused .category-dropdown {
+  display: none;
+}
+
+.category-dropdown {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.category-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  font-family: var(--sans-serif);
+  font-size: 0.875rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  white-space: nowrap;
+  color: #434343;
+}
+
+.category-clear {
+  display: none;
+  line-height: 0;
+  color: #999;
+}
+
+.category-clear svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.category-clear:hover {
+  color: #434343;
+}
+
+.category-dropdown.has-selection .category-clear {
+  display: inline-flex;
+}
+
+.category-dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.25rem);
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0;
+  z-index: 10;
+  min-width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.category-dropdown.open .category-dropdown-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  white-space: nowrap;
+  color: #434343;
+}
+
+.category-dropdown-item:hover {
+  background: #f5f5f5;
+}
+
+.category-dropdown-item input {
+  margin: 0;
+  accent-color: #434343;
 }
 
 .search-container input:focus {
@@ -328,10 +539,15 @@ table.cookbooks tbody tr:hover {
 
 .category {
   white-space: nowrap;
+  background: #f0f0f0;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: #666;
 }
 
 .category-sep {
-  color: #999;
+  display: none;
 }
 
 .site-footer {
@@ -363,7 +579,6 @@ table.cookbooks tbody tr:hover {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  margin-bottom: 3rem;
 }
 
 .featured-card {
@@ -371,6 +586,9 @@ table.cookbooks tbody tr:hover {
   flex-direction: column;
   text-decoration: none;
   color: inherit;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.375rem;
+  overflow: hidden;
 }
 
 .featured-card-icon {
@@ -378,7 +596,7 @@ table.cookbooks tbody tr:hover {
   align-items: center;
   justify-content: center;
   aspect-ratio: 3 / 1;
-  border-radius: 0.375rem;
+  overflow: hidden;
 }
 
 .featured-card:nth-child(1) .featured-card-icon {
@@ -394,29 +612,43 @@ table.cookbooks tbody tr:hover {
 }
 
 .featured-card-icon svg {
-  width: 3rem;
-  height: 3rem;
+  width: clamp(1.5rem, 5vw, 3rem);
+  height: clamp(1.5rem, 5vw, 3rem);
   fill: #fff;
 }
 
 .featured-card-content {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  background-color: #fff;
+  padding: 1rem 1rem 0.75rem;
+  gap: 0.75rem;
+  align-items: flex-end;
 }
 
 .featured-card-title {
-  margin-top: 0.75rem;
   font-size: 1rem;
   font-weight: 400;
   text-align: left;
+  align-self: flex-start;
 }
 
 .featured-card-category {
-  margin-top: 0.5rem;
+  margin-top: auto;
   font-size: 0.75rem;
-  text-align: left;
   color: #666;
+  background: #f0f0f0;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
 
 @media (max-width: 600px) {
   .featured {
@@ -425,8 +657,6 @@ table.cookbooks tbody tr:hover {
 
   .featured-card {
     flex-direction: row;
-    align-items: center;
-    gap: 1rem;
   }
 
   .featured-card-icon {
@@ -440,7 +670,20 @@ table.cookbooks tbody tr:hover {
     height: 2rem;
   }
 
-  .featured-card-title {
-    margin-top: 0;
+  table.cookbooks th:nth-child(2),
+  table.cookbooks td:nth-child(2) {
+    display: none;
+  }
+
+  .contribution {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 380px) {
+  table.cookbooks th:nth-child(3),
+  table.cookbooks td:nth-child(3) {
+    display: none;
   }
 }
