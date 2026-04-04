@@ -6,7 +6,7 @@ platforms = ["linux-64", "osx-arm64"]
 
 [tasks]
 build = "python -m scripts.build"
-serve = "python -m http.server -d build"
+serve = "python -m scripts.serve"
 dev = "python -m scripts.watch"
 watch = "python -m scripts.watch"
 format = "ruff format"
