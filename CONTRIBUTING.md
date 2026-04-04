@@ -21,15 +21,17 @@ Potential security vulnerabilities should be reported to security@columnar.tech.
     cd columnar-cookbook
     ```
 
-2. Build the website:
+2. Start a live-reloading development server on [localhost:8000](http://localhost:8000/):
+
+    ```sh
+    pixi run dev
+    ```
+    This will automatically build the website, watch for changes in the notebooks and templates, and refresh your browser as you work.
+
+    **Alternatively**, to build and serve the website statically without watching for changes:
 
     ```sh
     pixi run build
-    ```
-
-3. Serve the website to [localhost:8000](http://localhost:8000/):
-
-    ```sh
     pixi run serve
     ```
 
