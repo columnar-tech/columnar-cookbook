@@ -1,3 +1,3 @@
 # Columnar Cookbook
 
-Guides and examples for working with columnar data and Arrow-native tools.
+Recipes for database connectivity and data interchange with Arrow and ADBC

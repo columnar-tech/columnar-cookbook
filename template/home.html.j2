@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Columnar Cookbook</title>
-  <meta name="description" content="Guides and examples for working with columnar data and Arrow-native tools.">
+  <meta name="description" content="Recipes for database connectivity and data interchange with Arrow and ADBC">
   <meta property="og:title" content="Columnar Cookbook">
-  <meta property="og:description" content="Guides and examples for working with columnar data and Arrow-native tools.">
+  <meta property="og:description" content="Recipes for database connectivity and data interchange with Arrow and ADBC">
   <meta property="og:image" content="https://cookbook.columnar.tech/og.png">
   <meta property="og:url" content="https://cookbook.columnar.tech">
   <meta property="og:site_name" content="Columnar Cookbook">
@@ -18,69 +18,92 @@
 <main>
   <div class="header">
     <h1>Columnar Cookbook</h1>
-    <p>Guides and examples for working with columnar data and Arrow-native tools</p>
+    <p>Recipes for database connectivity and data interchange with Arrow and ADBC</p>
   </div>
-  <div class="featured">
-    <a href="/exploratory-data-analysis-with-pyarrow" class="featured-card">
-      <div class="featured-card-icon">
-        {% include 'components/icons/arrow.svg' %}
-      </div>
-      <div class="featured-card-content">
-        <span class="featured-card-title">Exploratory Data Analysis with PyArrow</span>
-        <span class="featured-card-category">Data Analysis</span>
-      </div>
-    </a>
-    <a href="/connect-to-ducklake-with-adbc-in-python" class="featured-card">
-      <div class="featured-card-icon">
-        {% include 'components/icons/ducklake.svg' %}
-      </div>
-      <div class="featured-card-content">
-        <span class="featured-card-title">Connect to DuckLake with ADBC in Python</span>
-        <span class="featured-card-category">Database Connections</span>
-      </div>
-    </a>
-    <a href="/connect-to-clickhouse-with-adbc-in-python" class="featured-card">
-      <div class="featured-card-icon">
-        {% include 'components/icons/clickhouse.svg' %}
-      </div>
-      <div class="featured-card-content">
-        <span class="featured-card-title">Connect to ClickHouse with ADBC in Python</span>
-        <span class="featured-card-category">Database Connections</span>
-      </div>
-    </a>
+  <div class="section">
+    <h2 class="section-heading">Featured Recipes</h2>
+    <div class="featured">
+      <a href="/exploratory-data-analysis-with-pyarrow" class="featured-card">
+        <div class="featured-card-icon">
+          {% include 'components/icons/arrow.svg' %}
+        </div>
+        <div class="featured-card-content">
+          <span class="featured-card-title">Exploratory Data Analysis with PyArrow</span>
+          <span class="featured-card-category">Data Analysis</span>
+        </div>
+      </a>
+      <a href="/connect-to-ducklake-with-adbc-in-python" class="featured-card">
+        <div class="featured-card-icon">
+          {% include 'components/icons/ducklake.svg' %}
+        </div>
+        <div class="featured-card-content">
+          <span class="featured-card-title">Connect to DuckLake with ADBC in Python</span>
+          <span class="featured-card-category">Database Connections</span>
+        </div>
+      </a>
+      <a href="/connect-to-clickhouse-with-adbc-in-python" class="featured-card">
+        <div class="featured-card-icon">
+          {% include 'components/icons/clickhouse.svg' %}
+        </div>
+        <div class="featured-card-content">
+          <span class="featured-card-title">Connect to ClickHouse with ADBC in Python</span>
+          <span class="featured-card-category">Database Connections</span>
+        </div>
+      </a>
+    </div>
   </div>
-  <div class="search-container">
-    <label for="cookbook-search" class="visually-hidden">Search cookbooks</label>
-    <input type="text" id="cookbook-search" placeholder="Search cookbooks..." autocomplete="off">
+  <div class="section">
+    <h2 class="section-heading">All Recipes</h2>
+    <div class="search-container">
+      <label for="cookbook-search" class="visually-hidden">Search recipes</label>
+      <div class="search-input-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="7"/><line x1="21" y1="21" x2="15.5" y2="15.5"/></svg>
+        <input type="text" id="cookbook-search" placeholder="Search recipes…" autocomplete="off">
+        <button type="button" class="search-clear" id="search-clear" aria-label="Clear search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="category-dropdown" id="category-dropdown">
+        <button type="button" class="category-dropdown-toggle" id="category-toggle">
+          <span class="category-dropdown-label">All categories</span>
+          <span class="category-clear" id="category-clear" role="button" aria-label="Clear categories">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </span>
+        </button>
+        <div class="category-dropdown-menu" id="category-menu"></div>
+      </div>
+    </div>
+    <div class="table-wrapper">
+      <table class="cookbooks">
+        <thead>
+          <tr>
+            <th class="sortable" data-sort="title">Title</th>
+            <th>Categories</th>
+            <th class="sortable active desc" data-sort="date">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for entry in registry|sort(attribute='date', reverse=true) %}
+          <tr class="clickable-row" data-href="/{{ entry.path|replace('notebooks/', '')|replace('.ipynb', '') }}" data-date="{{ entry.date }}">
+              <td>{{ entry.title }}</td>
+              <td>{% for cat in entry.categories %}<span class="category">{{ cat }}</span>{% if not loop.last %}<span class="category-sep"> · </span>{% endif %}{% endfor %}</td>
+              <td>{{ entry.date|format_date }}</td>
+          </tr>
+        {% endfor %}
+          <tr id="no-results" style="display: none;">
+            <td colspan="3" class="no-results">No cookbooks found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="contribution">
+      <p>Got a great cookbook idea? We'd love to see your contribution!</p>
+      <a href="https://github.com/columnar-tech/columnar-cookbook/blob/main/CONTRIBUTING.md" class="button" target="_blank" rel="noopener noreferrer">
+        <span>Contribution guide</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-up-right-icon lucide-move-up-right"><path d="M13 5H19V11"/><path d="M19 5L5 19"/></svg>
+      </a>
+    </div>
   </div>
-  <table class="cookbooks">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Categories</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for entry in registry|sort(attribute='date', reverse=true) %}
-      <tr class="clickable-row" data-href="/{{ entry.path|replace('notebooks/', '')|replace('.ipynb', '') }}">
-          <td>{{ entry.title }}</td>
-          <td>{% for cat in entry.categories %}<span class="category">{{ cat }}</span>{% if not loop.last %}<span class="category-sep"> · </span>{% endif %}{% endfor %}</td>
-          <td>{{ entry.date|format_date }}</td>
-      </tr>
-    {% endfor %}
-      <tr id="no-results" style="display: none;">
-        <td colspan="3" class="no-results">No cookbooks found</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="contribution">
-    <p>Got a great cookbook idea? We'd love to see your contribution!</p>
-    <a href="https://github.com/columnar-tech/columnar-cookbook/blob/main/CONTRIBUTING.md" class="button" target="_blank" rel="noopener noreferrer">
-      <span>Contribution guide</span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-up-right-icon lucide-move-up-right"><path d="M13 5H19V11"/><path d="M19 5L5 19"/></svg>
-    </a>
-</div>
 </main>
   <script>
     document.querySelectorAll('.clickable-row').forEach(row => {
@@ -93,20 +116,183 @@
     const searchInput = document.getElementById('cookbook-search');
     const rows = document.querySelectorAll('.cookbooks tbody .clickable-row');
     const noResults = document.getElementById('no-results');
+    const toggle = document.getElementById('category-toggle');
+    const menu = document.getElementById('category-menu');
+    const dropdown = document.getElementById('category-dropdown');
+    const activeCategories = new Set();
 
-    searchInput.addEventListener('input', () => {
+    const allCategories = new Set();
+    rows.forEach(row => {
+      row.querySelectorAll('td:nth-child(2) .category').forEach(span => {
+        allCategories.add(span.textContent.trim());
+      });
+    });
+
+    [...allCategories].sort().forEach(cat => {
+      const label = document.createElement('label');
+      label.className = 'category-dropdown-item';
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.value = cat;
+      checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          activeCategories.add(cat);
+        } else {
+          activeCategories.delete(cat);
+        }
+        updateToggleLabel();
+        filterRows();
+      });
+      label.appendChild(checkbox);
+      label.appendChild(document.createTextNode(cat));
+      menu.appendChild(label);
+    });
+
+    const narrow = window.matchMedia('(max-width: 600px)');
+
+    const categoryClear = document.getElementById('category-clear');
+
+    const toggleLabel = toggle.querySelector('.category-dropdown-label');
+
+    function updateToggleLabel() {
+      const hasSelection = activeCategories.size > 0;
+      dropdown.classList.toggle('has-selection', hasSelection);
+      if (!hasSelection) {
+        toggleLabel.textContent = 'All categories';
+      } else if (activeCategories.size === 1 && !narrow.matches) {
+        toggleLabel.textContent = [...activeCategories][0];
+      } else {
+        const n = activeCategories.size;
+        toggleLabel.textContent = n + (n === 1 ? ' category' : ' categories');
+      }
+    }
+
+    categoryClear.addEventListener('click', (e) => {
+      e.stopPropagation();
+      activeCategories.clear();
+      menu.querySelectorAll('input').forEach(cb => cb.checked = false);
+      updateToggleLabel();
+      filterRows();
+    });
+
+    narrow.addEventListener('change', updateToggleLabel);
+
+    toggle.addEventListener('click', () => {
+      dropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+      }
+    });
+
+    function filterRows() {
       const query = searchInput.value.toLowerCase().trim();
       let visibleCount = 0;
 
       rows.forEach(row => {
         const title = row.querySelector('td:first-child').textContent.toLowerCase();
         const categories = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-        const matches = title.includes(query) || categories.includes(query);
-        row.style.display = matches ? '' : 'none';
-        if (matches) visibleCount++;
+        const matchesSearch = title.includes(query) || categories.includes(query);
+
+        let matchesCategory = true;
+        if (activeCategories.size > 0) {
+          const rowCats = Array.from(row.querySelectorAll('td:nth-child(2) .category')).map(s => s.textContent.trim());
+          matchesCategory = [...activeCategories].some(c => rowCats.includes(c));
+        }
+
+        const visible = matchesSearch && matchesCategory;
+        row.style.display = visible ? '' : 'none';
+        if (visible) visibleCount++;
       });
 
       noResults.style.display = visibleCount === 0 ? '' : 'none';
+    }
+
+    const clearBtn = document.getElementById('search-clear');
+
+    function updateHasValue() {
+      searchContainer.classList.toggle('has-value', searchInput.value.length > 0);
+    }
+
+    searchInput.addEventListener('input', () => {
+      filterRows();
+      updatePlaceholder();
+      updateHasValue();
+    });
+
+    clearBtn.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+    });
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      updateHasValue();
+      updatePlaceholder();
+      filterRows();
+    });
+
+    const searchContainer = document.querySelector('.search-container');
+    function updatePlaceholder() {
+      const w = searchInput.offsetWidth;
+      if (w < 80 && !searchInput.value) {
+        searchInput.placeholder = '';
+        searchContainer.classList.add('show-icon');
+      } else {
+        searchContainer.classList.remove('show-icon');
+        if (w < 160) {
+          searchInput.placeholder = 'Search\u2026';
+        } else {
+          searchInput.placeholder = 'Search recipes\u2026';
+        }
+      }
+    }
+    new ResizeObserver(updatePlaceholder).observe(searchInput);
+
+    searchInput.addEventListener('focus', () => {
+      searchContainer.classList.add('search-focused');
+    });
+    searchInput.addEventListener('blur', () => {
+      searchContainer.classList.remove('search-focused');
+    });
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' || e.key === 'Enter') {
+        searchInput.blur();
+      }
+    });
+
+    const tbody = document.querySelector('.cookbooks tbody');
+    document.querySelectorAll('.sortable').forEach(th => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        const wasDesc = th.classList.contains('desc');
+        const asc = wasDesc;
+
+        document.querySelectorAll('.sortable').forEach(h => h.classList.remove('active', 'asc', 'desc'));
+        th.classList.add('active', asc ? 'asc' : 'desc');
+
+        const sortedRows = Array.from(rows).sort((a, b) => {
+          let valA, valB;
+          if (key === 'date') {
+            valA = a.dataset.date;
+            valB = b.dataset.date;
+          } else {
+            valA = a.querySelector('td:first-child').textContent.toLowerCase();
+            valB = b.querySelector('td:first-child').textContent.toLowerCase();
+          }
+          const cmp = valA < valB ? -1 : valA > valB ? 1 : 0;
+          return asc ? cmp : -cmp;
+        });
+
+        sortedRows.forEach(row => tbody.appendChild(row));
+        tbody.appendChild(document.getElementById('no-results'));
+      });
     });
   </script>
 {% include 'components/site-footer.html.j2' %}
