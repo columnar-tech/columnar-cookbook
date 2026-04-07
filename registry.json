@@ -110,5 +110,13 @@
     "authors": ["emil-sadek"],
     "description": "Perform exploratory data analysis on the Palmer Penguins dataset using PyArrow compute functions for efficient columnar data processing.",
     "categories": ["Data Analysis"]
+  },
+  {
+    "title": "Reduce Data Size with Arrow IPC Encodings and Compression",
+    "path": "notebooks/reduce-data-size-with-arrow-ipc-encodings-and-compression.ipynb",
+    "date": "2026-04-07",
+    "authors": ["ian-cook"],
+    "description": "Convert a CSV file into a compact Arrow IPC file using run-end encoding, dictionary encoding, and zstd compression to dramatically reduce file size.",
+    "categories": ["Data Processing"]
   }
 ]

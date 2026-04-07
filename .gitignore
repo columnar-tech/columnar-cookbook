@@ -6,5 +6,11 @@
 build
 __pycache__/
 
+# Notebook-generated output files
+data/arrow-meeting-attendees/attendees.arrow
+
+# Jupyter
+.ipynb_checkpoints/
+
 # Ruff
 .ruff_cache

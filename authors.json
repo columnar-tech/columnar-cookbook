@@ -1,6 +1,10 @@
 {
   "emil-sadek": {
     "name": "Emil Sadek",
-    "avatar": "https://columnar.tech/people/emil_sadek.jpg"
+    "avatar": "https://columnar.tech/people/thumbnails/emil_sadek.jpg"
+  },
+  "ian-cook": {
+    "name": "Ian Cook",
+    "avatar": "https://columnar.tech/people/thumbnails/ian_cook.jpg"
   }
 }
