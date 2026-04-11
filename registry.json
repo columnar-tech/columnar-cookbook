@@ -118,5 +118,13 @@
     "authors": ["ian-cook"],
     "description": "Convert a CSV file into a compact Arrow IPC file using run-end encoding, dictionary encoding, and zstd compression to dramatically reduce file size.",
     "categories": ["Data Processing"]
+  },
+  {
+    "title": "Vortex and ADBC Integration",
+    "path": "notebooks/vortex-and-adbc-integration.ipynb",
+    "date": "2026-04-10",
+    "authors": ["emil-sadek"],
+    "description": "Read and write Vortex files using ADBC and Apache Arrow for efficient columnar data exchange with databases.",
+    "categories": ["Data Processing"]
   }
 ]
