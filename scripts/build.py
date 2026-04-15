@@ -34,6 +34,8 @@ def load_exporter() -> HTMLExporter:
     c = Config()
     c.HTMLExporter.extra_template_basedirs = [str(ROOT)]
     c.HTMLExporter.template_name = TEMPLATE
+    c.TagRemovePreprocessor.remove_input_tags = {"remove_input"}
+    c.TagRemovePreprocessor.enabled = True
     return HTMLExporter(config=c)
 
 

@@ -1,0 +1,48 @@
+profile_version = 1
+driver = "flightsql"
+
+[Options]
+# Connection
+uri = "grpc+tcp://localhost:31337"
+username = "gizmosql_user"
+password = "{{ env_var(GIZMOSQL_PASSWORD) }}"
+
+# TLS/SSL
+"adbc.flight.sql.client_option.tls_skip_verify" = false
+# "adbc.flight.sql.client_option.tls_root_certs" = ""
+# "adbc.flight.sql.client_option.tls_override_hostname" = ""
+
+# Mutual TLS (mTLS)
+# "adbc.flight.sql.client_option.mtls_cert_chain" = ""
+# "adbc.flight.sql.client_option.mtls_private_key" = ""
+
+# Authority
+# "adbc.flight.sql.client_option.authority" = ""
+
+# Timeouts (seconds; uncomment and set to enable)
+# "adbc.flight.sql.rpc.timeout_seconds.fetch" = ""
+# "adbc.flight.sql.rpc.timeout_seconds.query" = ""
+# "adbc.flight.sql.rpc.timeout_seconds.update" = ""
+
+# Connection behavior
+"adbc.flight.sql.client_option.with_block" = false
+"adbc.flight.sql.rpc.with_cookie_middleware" = false
+# "adbc.flight.sql.client_option.with_max_msg_size" = ""
+
+# OAuth 2.0 (alternative to username/password; uncomment to use)
+# "adbc.flight.sql.authorization_header" = "Bearer <token>"
+# "adbc.flight.sql.oauth.flow" = ""
+# "adbc.flight.sql.oauth.client_id" = ""
+# "adbc.flight.sql.oauth.client_secret" = ""
+# "adbc.flight.sql.oauth.token_uri" = ""
+# "adbc.flight.sql.oauth.auth_uri" = ""
+# "adbc.flight.sql.oauth.redirect_uri" = ""
+# "adbc.flight.sql.oauth.scope" = ""
+# "adbc.flight.sql.oauth.exchange.subject_token" = ""
+# "adbc.flight.sql.oauth.exchange.subject_token_type" = ""
+# "adbc.flight.sql.oauth.exchange.actor_token" = ""
+# "adbc.flight.sql.oauth.exchange.actor_token_type" = ""
+# "adbc.flight.sql.oauth.exchange.requested_token_type" = ""
+# "adbc.flight.sql.oauth.exchange.aud" = ""
+# "adbc.flight.sql.oauth.exchange.resource" = ""
+# "adbc.flight.sql.oauth.exchange.scope" = ""
