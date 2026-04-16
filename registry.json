@@ -126,5 +126,13 @@
     "authors": ["emil-sadek"],
     "description": "Read and write Vortex files using ADBC and Apache Arrow for efficient columnar data exchange with databases.",
     "categories": ["Data Processing"]
+  },
+  {
+    "title": "Use ADBC Connection Profiles in Python",
+    "path": "notebooks/use-adbc-connection-profiles-in-python.ipynb",
+    "date": "2026-04-15",
+    "authors": ["ian-cook"],
+    "description": "Define reusable, named connection configurations in TOML files and use them to connect to databases with ADBC, just like ODBC DSNs.",
+    "categories": ["Database Connections"]
   }
 ]
