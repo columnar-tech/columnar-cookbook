@@ -68,6 +68,15 @@ div.jp-RenderedText pre {
   font-style: normal;
 }
 
+.jp-RenderedText pre {
+  overflow-x: auto;
+  white-space: pre !important;
+}
+
+.jp-InputArea-editor pre {
+  overflow-x: auto;
+}
+
 #navbar {
   font-family: var(--sans-serif);
   font-size: 1rem;
