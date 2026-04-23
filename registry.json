@@ -134,5 +134,13 @@
     "authors": ["ian-cook"],
     "description": "Define reusable, named connection configurations in TOML files and use them to connect to databases with ADBC, just like ODBC DSNs.",
     "categories": ["Database Connections"]
+  },
+  {
+    "title": "Data Pipelines with Dagster and ADBC",
+    "path": "notebooks/data-pipelines-with-dagster-and-adbc.ipynb",
+    "date": "2026-04-22",
+    "authors": ["emil-sadek"],
+    "description": "Learn how to build data pipelines using Dagster's ADBC integration for Arrow-native database connectivity.",
+    "categories": ["Database Connections"]
   }
 ]
