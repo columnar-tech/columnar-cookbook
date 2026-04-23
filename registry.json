@@ -134,5 +134,13 @@
     "authors": ["ian-cook"],
     "description": "Define reusable, named connection configurations in TOML files and use them to connect to databases with ADBC, just like ODBC DSNs.",
     "categories": ["Database Connections"]
+  },
+  {
+    "title": "DataFusion Table Provider for ADBC",
+    "path": "notebooks/datafusion-table-provider-for-adbc.ipynb",
+    "date": "2026-04-17",
+    "authors": ["emil-sadek"],
+    "description": "",
+    "categories": ["Database Connections"]
   }
 ]
