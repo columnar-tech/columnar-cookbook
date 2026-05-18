@@ -134,5 +134,13 @@
     "authors": ["ian-cook"],
     "description": "Define reusable, named connection configurations in TOML files and use them to connect to databases with ADBC, just like ODBC DSNs.",
     "categories": ["Database Connections"]
+  },
+  {
+    "title": "Move Data Between Databases Efficiently with ADBC",
+    "path": "notebooks/moving-data-between-databases-with-adbc.ipynb",
+    "date": "2026-04-29",
+    "authors": ["bryce-mecum"],
+    "description": "Move data between a Flight SQL database and DuckDB using ADBC and Apache Arrow's RecordBatchReader, without materializing the full dataset in memory.",
+    "categories": ["Data Loading"]
   }
 ]
