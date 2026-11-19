@@ -142,5 +142,13 @@
     "authors": ["bryce-mecum"],
     "description": "Move data between a Flight SQL database and DuckDB using ADBC and Apache Arrow's RecordBatchReader, without materializing the full dataset in memory.",
     "categories": ["Data Loading"]
+  },
+  {
+    "title": "Use GeoArrow WKB with DuckDB and ADBC",
+    "path": "notebooks/use-geoarrow-wkb-with-duckdb-and-adbc.ipynb",
+    "date": "2026-11-20",
+    "authors": ["prabhacloud"],
+    "description": "Query DuckDB geometry values as GeoArrow WKB through ADBC, inspect their Arrow extension type, and convert them to readable WKT.",
+    "categories": ["Data Processing"]
   }
 ]
