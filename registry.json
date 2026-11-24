@@ -142,5 +142,13 @@
     "authors": ["bryce-mecum"],
     "description": "Move data between a Flight SQL database and DuckDB using ADBC and Apache Arrow's RecordBatchReader, without materializing the full dataset in memory.",
     "categories": ["Data Loading"]
+  },
+  {
+    "title": "BigQuery Workload Identity Federation with ADBC",
+    "path": "notebooks/bigquery-workload-identity-federation-with-adbc.ipynb",
+    "date": "2026-11-24",
+    "authors": ["ian-cook"],
+    "description": "Authenticate to BigQuery as a service account using ADBC, without running gcloud auth application-default login, refreshing tokens manually, or creating a service account key.",
+    "categories": ["Database Connections"]
   }
 ]
